@@ -1,5 +1,5 @@
+using Assets.Scripts.Character.StateMachine.States;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Character
 {
@@ -7,45 +7,31 @@ namespace Assets.Scripts.Character
     public class Character : MonoBehaviour
     {
         [SerializeField] private CharacterConfig _config;
+        [SerializeField] private Animator _animator;
 
         private CharacterInput _input;
         private CharacterController _controller;
+        private MovementState _movement;
+        private View _view;
 
-        private Vector2 _direction;
-        private InputAction InputMove => _input.Gameplay.Move;
+        public CharacterInput Input => _input;
+        public CharacterController Controller => _controller;
+        public CharacterConfig Config => _config;
+        public View View => _view;
 
         private void Awake()
         {
             _input = new CharacterInput();
+            _view = new View(_animator);
             _controller = GetComponent<CharacterController>();
+            _movement = new MovementState(this);
         }
 
-        private void Update()
-        {
-           _controller.Move(_direction.normalized * (_config.Speed * Time.deltaTime));
-            Flip();
-        }
+        private void Update() => _movement.Update();
 
-       private void Flip() => transform.rotation = (_direction.x > 0) ? (GetQuaternionRight): (GetQuaternionLeft);
+        private void OnEnable() => _input.Enable();
 
-       private void GetDirectionInput(InputAction.CallbackContext context) => _direction = context.ReadValue<Vector2>();
-
-       private Quaternion GetQuaternionLeft => Quaternion.Euler(0, 0, 0);
-
-       private Quaternion GetQuaternionRight => Quaternion.Euler(0, 180, 0);
-
-       private void OnEnable()
-       {
-            _input.Enable();
-            InputMove.performed += GetDirectionInput;
-       }
-
-       private void OnDisable()
-       {
-            InputMove.performed -= GetDirectionInput;
-            _input.Disable();
-       }
-
+        private void OnDisable() => _input.Disable();
     }
 }
 
