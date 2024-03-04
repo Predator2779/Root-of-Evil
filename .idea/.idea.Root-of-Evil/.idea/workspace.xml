@@ -41,10 +41,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Configs/CharacterConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/Health.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/ValueStorages/ValueBar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Character/ValueStorages/ValueStorage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Character/ValueStorages/Health.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/ValueStorages/Bars/ValueBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/ValueStorages/Bars/GradientValueBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Character/ValueStorages/ValueStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Character/ValueStorages/Health.cs" />
       </list>
     </option>
   </component>
@@ -90,7 +90,7 @@
       <updated>1709541414415</updated>
       <workItem from="1709541445014" duration="327000" />
       <workItem from="1709541809590" duration="1125000" />
-      <workItem from="1709556752662" duration="2448000" />
+      <workItem from="1709556752662" duration="4988000" />
     </task>
     <servers />
   </component>
